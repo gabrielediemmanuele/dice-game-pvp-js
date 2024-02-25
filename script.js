@@ -72,15 +72,15 @@ holdButton.addEventListener('click', function () {
       scores[activePlayer];
 
     //finish game at 100+
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= 10) {
       //if the game is finished.
       playing = false;
-      document.querySelector(
-        `player--${activePlayer}`.classList.add('.player--winner')
-      );
-      document.querySelector(
-        `player--${activePlayer}`.classList.remove('.player--active')
-      );
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.remove('player--active');
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.add('player--winner');
     } else {
       //siwtch to the next player
       switchPlayer();
