@@ -7,13 +7,15 @@ const score1Element = document.getElementById('score--1');
 const currentScore0 = document.getElementById('current--0');
 const currentScore1 = document.getElementById('current--1');
 
-const player1 = document.getElementById('name--1');
-const player2 = document.getElementById('name--2');
+const player0Element = document.querySelector('.player--0');
+const player1Element = document.querySelector('.player--1');
+
+const name0Element = document.getElementById('name--0');
+const name1Element = document.getElementById('name--1');
 
 const diceElement = document.querySelector('.dice');
 const newGameButton = document.querySelector('.btn--new');
 const diceRollButton = document.querySelector('.btn--roll');
-console.log(diceElement);
 
 //* Starting Conditions
 score0Element.textContent = 0;
@@ -37,6 +39,9 @@ diceRollButton.addEventListener('click', function () {
     currentScore += diceNumber;
     currentScore0.textContent = currentScore;
   } else {
-    // Add dice to current score
+    //Player Switch
+    //a) change active player
+    player0Element.classList.remove('player--active');
+    player1Element.classList.add('player--active');
   }
 });
