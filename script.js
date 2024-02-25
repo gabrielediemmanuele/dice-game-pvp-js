@@ -17,6 +17,8 @@ const diceElement = document.querySelector('.dice');
 const newGameButton = document.querySelector('.btn--new');
 const diceRollButton = document.querySelector('.btn--roll');
 const holdButton = document.querySelector('.btn--hold');
+
+const winnerPlayer = document.querySelector(`.winner--player`);
 //* Starting Conditions
 score0Element.textContent = 0;
 score1Element.textContent = 0;
@@ -82,10 +84,9 @@ holdButton.addEventListener('click', function () {
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.add('player--winner');
-      document.querySelector(`.winner--player`).classList.remove('hidden');
-      document.querySelector(`.winner--player`).textContent = `Player ${
-        activePlayer + 1
-      } win 🏆!`;
+
+      winnerPlayer.classList.remove('hidden');
+      winnerPlayer.textContent = `Player ${activePlayer + 1} win 🏆!`;
     } else {
       //siwtch to the next player
       switchPlayer();
@@ -93,4 +94,4 @@ holdButton.addEventListener('click', function () {
   }
 });
 
-newGameButton;
+newGameButton.addEventListener('click', function () {});
