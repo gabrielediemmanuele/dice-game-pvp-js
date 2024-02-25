@@ -82,6 +82,10 @@ holdButton.addEventListener('click', function () {
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.add('player--winner');
+      document.querySelector(`.winner--player`).classList.remove('hidden');
+      document.querySelector(`.winner--player`).textContent = `Player ${
+        activePlayer + 1
+      } win 🏆!`;
     } else {
       //siwtch to the next player
       switchPlayer();
