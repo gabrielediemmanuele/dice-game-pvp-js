@@ -1,11 +1,26 @@
 'use strict';
 
-// Elements selected
+//* Elements selected
 const score0Element = document.querySelector('#score--0');
 const score1Element = document.getElementById('score--1');
 const diceElement = document.querySelector('.dice');
+const newGameButton = document.querySelector('.btn--new');
+const diceRollButton = document.querySelector('.btn--roll');
+console.log(diceElement);
 
-//Starting Conditions
+//* Starting Conditions
 score0Element.textContent = 0;
 score1Element.textContent = 0;
 diceElement.classList.add('hidden');
+
+//* Rolling dice functionality
+diceRollButton.addEventListener('click', function () {
+  // 1) Generate a randome number
+  let diceNumber = Math.floor(Math.random() * 6) + 1;
+  // 2) display the dice
+  diceElement.classList.remove('hidden'); //a. Remove Hidden
+  let diceImage = 'dice-' + diceNumber + '.png'; //b Build image string
+  diceElement.src = diceImage; //c Add to the image src the string.
+
+  // 3) Check for rolled 1: if true, switch to next player
+});
