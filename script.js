@@ -66,6 +66,7 @@ function switchPlayer() {
 diceRollButton.addEventListener('click', function () {
   if (playing) {
     //if the game is running... -> look at the winner condition for the end.
+
     // 1) Generate a randome number
     let diceNumber = Math.floor(Math.random() * 6) + 1;
     // 2) display the dice
@@ -92,6 +93,7 @@ holdButton.addEventListener('click', function () {
   if (playing) {
     // 1. Add current score to active player's score
     scores[activePlayer] += currentScore;
+
     // 2. check if player's score is >= 100
     document.getElementById(`score--${activePlayer}`).textContent =
       scores[activePlayer];
@@ -111,7 +113,7 @@ holdButton.addEventListener('click', function () {
       winnerPlayer.classList.remove('hidden');
       winnerPlayer.textContent = `Player ${activePlayer + 1} win 🏆!`;
     } else {
-      //siwtch to the next player
+      //switch to the next player
       switchPlayer();
     }
   }
