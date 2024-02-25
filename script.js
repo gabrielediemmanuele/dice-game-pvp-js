@@ -19,18 +19,40 @@ const diceRollButton = document.querySelector('.btn--roll');
 const holdButton = document.querySelector('.btn--hold');
 
 const winnerPlayer = document.querySelector(`.winner--player`);
-//* Starting Conditions
-score0Element.textContent = 0;
-score1Element.textContent = 0;
-diceElement.classList.add('hidden');
 
-let scores = [0, 0];
+//variables declarations
+let scores;
 
-let currentScore = 0;
+let currentScore;
 
-let activePlayer = 0;
+let activePlayer;
 
-let playing = true;
+let playing;
+
+function newGame() {
+  //* Starting Conditions
+
+  scores = [0, 0];
+
+  currentScore = 0;
+
+  activePlayer = 0;
+
+  playing = true;
+
+  score0Element.textContent = 0;
+  currentScore0.textContent = 0;
+  score1Element.textContent = 0;
+  currentScore1.textContent = 0;
+  diceElement.classList.add('hidden');
+  player0Element.classList.remove('player--winner');
+  player1Element.classList.remove('player--winner');
+  player0Element.classList.add('player--active');
+  player1Element.classList.remove('player--active');
+  winnerPlayer.classList.add('hidden');
+}
+
+newGame();
 
 function switchPlayer() {
   document.getElementById(`current--${activePlayer}`).textContent = 0;
@@ -65,6 +87,7 @@ diceRollButton.addEventListener('click', function () {
   }
 });
 
+//* holdButton holdScore
 holdButton.addEventListener('click', function () {
   if (playing) {
     // 1. Add current score to active player's score
@@ -94,17 +117,4 @@ holdButton.addEventListener('click', function () {
   }
 });
 
-newGameButton.addEventListener('click', function () {
-  playing = true;
-  scores = [0, 0];
-  currentScore = 0;
-  activePlayer = 0;
-  document.getElementById('score--0').textContent = 0;
-  document.getElementById('current--0').textContent = 0;
-  document.getElementById('score--1').textContent = 0;
-  document.getElementById('current--1').textContent = 0;
-  document.querySelector(`.player--0`).classList.remove('player--winner');
-  document.querySelector(`.player--1`).classList.remove('player--winner');
-  document.querySelector(`.player--0`).classList.add('player--active');
-  winnerPlayer.classList.add('hidden');
-});
+newGameButton.addEventListener('click', newGame);
