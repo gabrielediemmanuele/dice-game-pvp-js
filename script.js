@@ -24,7 +24,7 @@ score0Element.textContent = 0;
 score1Element.textContent = 0;
 diceElement.classList.add('hidden');
 
-const scores = [0, 0];
+let scores = [0, 0];
 
 let currentScore = 0;
 
@@ -94,4 +94,17 @@ holdButton.addEventListener('click', function () {
   }
 });
 
-newGameButton.addEventListener('click', function () {});
+newGameButton.addEventListener('click', function () {
+  playing = true;
+  scores = [0, 0];
+  currentScore = 0;
+  activePlayer = 0;
+  document.getElementById('score--0').textContent = 0;
+  document.getElementById('current--0').textContent = 0;
+  document.getElementById('score--1').textContent = 0;
+  document.getElementById('current--1').textContent = 0;
+  document.querySelector(`.player--0`).classList.remove('player--winner');
+  document.querySelector(`.player--1`).classList.remove('player--winner');
+  document.querySelector(`.player--0`).classList.add('player--active');
+  winnerPlayer.classList.add('hidden');
+});
