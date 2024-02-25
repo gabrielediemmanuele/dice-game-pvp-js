@@ -22,7 +22,11 @@ score0Element.textContent = 0;
 score1Element.textContent = 0;
 diceElement.classList.add('hidden');
 
+const scores = [0, 0];
+
 let currentScore = 0;
+
+let activePlayer = 0;
 
 //* Rolling dice functionality
 diceRollButton.addEventListener('click', function () {
@@ -37,11 +41,15 @@ diceRollButton.addEventListener('click', function () {
   if (diceNumber !== 1) {
     // Add dice to current score
     currentScore += diceNumber;
-    currentScore0.textContent = currentScore;
+    document.getElementById(`current--${activePlayer}`).textContent =
+      currentScore;
   } else {
     //Player Switch
     //a) change active player
-    player0Element.classList.remove('player--active');
-    player1Element.classList.add('player--active');
+    document.getElementById(`current--${activePlayer}`).textContent = 0;
+    activePlayer = activePlayer === 0 ? 1 : 0;
+    currentScore = 0;
+    player0Element.classList.toggle('player--active');
+    player1Element.classList.toggle('player--active');
   }
 });
